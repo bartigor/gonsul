@@ -14,6 +14,8 @@ ARG GONSUL
 
 COPY --from=build $GONSUL/bin/gonsul /usr/bin/gonsul
 RUN adduser -D gonsul
+RUN mkdir /home/gonsul/.ssh
+RUN chown gonsul:gonsul /home/gonsul/.ssh
 USER gonsul
 
 ENTRYPOINT [ "/usr/bin/gonsul" ]
